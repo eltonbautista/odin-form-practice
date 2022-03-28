@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <form action="form">
+                <fieldset>
+                    <legend>Simple form</legend>
+                    <div class="form-input-container">
+                        <div>
+                            <label for="email">
+                                <span>Please enter an email address:</span>
+                                <input
+                                    required
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    minlength="8"
+                                />
+                                <span class="error" aria-live="polite"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="country">
+                                <span>Country you reside in:</span>
+                                <input
+                                    required
+                                    type="text"
+                                    name="country"
+                                    id="country"
+                                    pattern="[a-zA-Z]"
+                                />
+                                <span class="error" aria-live="polite"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="zip-code">
+                                <span>Please enter a valid zip-code:</span>
+                                <input
+                                    required
+                                    type="text"
+                                    name="zip-code"
+                                    id="zip-code"
+                                    pattern="(^\d{5}$)|(^\d{9}$)|(^\d{5}-\d{4}$)"
+                                    maxlength="10"
+                                />
+                                <span class="error" aria-live="polite"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="password">
+                                <span>Please enter a valid password:</span>
+                                <input
+                                    required
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    minlength="10"
+                                />
+                                <span class="error" aria-live="polite"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="password-confirmation">
+                                <span>Please re-enter your password:</span>
+                                <input
+                                    required
+                                    type="password"
+                                    name="password-confirmation"
+                                    id="password-confirmation"
+                                    minlength="10"
+                                />
+                                <span class="error" aria-live="polite"></span>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
