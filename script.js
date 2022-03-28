@@ -39,6 +39,8 @@ const formValidationModulePattern = (function formValidationModulePattern() {
             countryErrorSpan.textContent = 'Please do not enter any numbers.';
         } else if (countryInput.validity.valueMissing) {
             countryErrorSpan.textContent = 'Please enter a country.';
+        } else if (countryInput.validity.tooShort) {
+            countryErrorSpan.textContent = `Value needs to be at least ${countryInput.minLength} characters; currently it is ${countryInput.value.length}`;
         }
         countryErrorSpan.className = 'error active';
     };
@@ -47,8 +49,8 @@ const formValidationModulePattern = (function formValidationModulePattern() {
         if (zipCodeInput.validity.patternMismatch) {
             zipCodeErrorSpan.textContent =
                 'Please enter a proper zip-code format';
-        } else if (zipCodeInput.validity.tooLong) {
-            zipCodeErrorSpan.textContent = `Zip-code should be no more than ${zipCodeInput.maxLength} characters; you entered ${zipCodeInput.value.length}`;
+        } else if (zipCodeInput.validity.tooShort) {
+            zipCodeErrorSpan.textContent = `Zip-code should be more than ${zipCodeInput.minLength} characters; you entered ${zipCodeInput.value.length}`;
         } else if (zipCodeInput.validity.valueMissing) {
             zipCodeErrorSpan.textContent = 'Please enter a zip-code';
         }
@@ -68,6 +70,10 @@ const formValidationModulePattern = (function formValidationModulePattern() {
                 passwordConfirmationErrorSpan.textContent = `Your password needs to be at least ${passwordInput.minLength} characters; currently it is ${passwordInput.value.length}`;
             } else if (passwordConfirmationInput.validity.valueMissing) {
                 passwordConfirmationErrorSpan.textContent = `Please enter a password of at least ${passwordInput.minLength} characters`;
+            }
+            if (passwordConfirmationInput.value !== passwordInput.value) {
+                passwordConfirmationErrorSpan.textContent =
+                    'Please make sure your passwords match';
             }
             passwordConfirmationErrorSpan.className = 'error active';
         };
@@ -120,7 +126,10 @@ const formValidationModulePattern = (function formValidationModulePattern() {
     const passwordConfirmationInputValidityCheck =
         (function passwordConfirmationInputValidityCheck() {
             passwordConfirmationInput.addEventListener('input', () => {
-                if (passwordConfirmationInput.validity.valid) {
+                if (
+                    passwordConfirmationInput.validity.valid &&
+                    passwordConfirmationInput.value === passwordInput.value
+                ) {
                     passwordConfirmationErrorSpan.textContent = '';
                     passwordConfirmationErrorSpan.className = 'error';
                 } else {

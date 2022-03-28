@@ -1,0 +1,10 @@
+input:invalid:focus {
+    background-color: rgba(255, 0, 0, 0.419);
+}
+
+span.error.active {
+    color: red;
+    background-color: black;
+    padding: 1px;
+    font-weight: 600;
+}

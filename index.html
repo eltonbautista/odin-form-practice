@@ -34,7 +34,8 @@
                                     type="text"
                                     name="country"
                                     id="country"
-                                    pattern="[a-zA-Z]"
+                                    pattern="^([^0-9]*)$"
+                                    minlength="4"
                                 />
                                 <span class="error" aria-live="polite"></span>
                             </label>
@@ -47,8 +48,8 @@
                                     type="text"
                                     name="zip-code"
                                     id="zip-code"
-                                    pattern="(^\d{5}$)|(^\d{9}$)|(^\d{5}-\d{4}$)"
-                                    maxlength="10"
+                                    maxlength="11"
+                                    minlength="2"
                                 />
                                 <span class="error" aria-live="polite"></span>
                             </label>
@@ -61,7 +62,7 @@
                                     type="password"
                                     name="password"
                                     id="password"
-                                    minlength="10"
+                                    minlength="11"
                                 />
                                 <span class="error" aria-live="polite"></span>
                             </label>
